@@ -24,7 +24,8 @@ class DashboardController extends Controller
     public function index(Request $request)
     {   
         // Helpers::pp("pradeep");
-        return view('pages.dashboard');
+        $data['page_name']  = "Dashboard";
+        return view('pages.dashboard', $data);
     }
 
 
