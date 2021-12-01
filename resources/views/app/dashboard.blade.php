@@ -1,4 +1,4 @@
-@extends("includes.app")
+@extends("layouts.app")
 @section("page-content")      
    <div class="body flex-grow-1 px-3">
         <div class="container-lg">

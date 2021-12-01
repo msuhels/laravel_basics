@@ -51,14 +51,9 @@
     <link href="assets/coreui/vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
   </head>
   <body>
-    @include("includes.sidebar")
-    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
-        @include("includes.header")
-        @yield("page-content")
-    </div>
-    @include("includes.footer")
-    
-    </div>
+  <div id="app">
+    @yield('app')
+  </div>
     <!-- CoreUI and necessary plugins-->
     <script src="assets/coreui/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <script src="assets/coreui/vendors/simplebar/js/simplebar.min.js"></script>
