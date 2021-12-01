@@ -1,4 +1,11 @@
 @extends("layouts.app")
+
+@section("page-title") Dashboard @endsection
+
+@section("page-style")
+
+@endsection
+
 @section("page-content")      
    <div class="body flex-grow-1 px-3">
         <div class="container-lg">
@@ -752,4 +759,7 @@
           <!-- /.row-->
         </div>
       
+@endsection
+@section("page-script")   
+
 @endsection

@@ -8,7 +8,8 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>CoreUI Free Bootstrap Admin Template</title>
+    <title>@yield('page-title', 'Home') &mdash; {{ config('app.name') }}</title>
+
     <link rel="apple-touch-icon" sizes="57x57" href="assets/coreui/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="assets/coreui/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="assets/coreui/favicon/apple-icon-72x72.png">
@@ -26,6 +27,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="assets/coreui/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Vendors styles-->
     <link rel="stylesheet" href="assets/coreui/vendors/simplebar/css/simplebar.css">
     <link rel="stylesheet" href="assets/coreui/css/vendors/simplebar.css">
@@ -34,6 +36,7 @@
     <!-- We use those styles to show code examples, you should remove them in your application.-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
     <link href="assets/coreui/css/examples.css" rel="stylesheet">
+    @yield('page-style')
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
     <script>
@@ -69,6 +72,6 @@
     <script src="assets/coreui/js/main.js"></script>
     <script>
     </script>
-
+  @yield('page-script')
   </body>
 </html>
