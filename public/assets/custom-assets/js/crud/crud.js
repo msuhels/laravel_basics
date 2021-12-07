@@ -35,19 +35,45 @@ function editSubmitForm(){
 
 $(document).ready(function() {
     getList();
-
+//getCrudList();
     $(document).on('click', ".pagination a", function(e) {
             e.preventDefault();
             $('li').removeClass('active');
             $(this).parent('li').addClass('active');
             var page = $(this).attr('href').split('page=')[1];
-            getList(page);
+            var status = $(this).attr('href').split('status=')[1];
+            var search = $(this).attr('href').split('search=')[1];
+            getList(page,status,search);
     });
 
-    function getList(page=1){
+
+$(document).on('click', ".getCrudList", function(e) {
+            
+            var page = $("#page").val();
+            var status = $("#status").val();
+            var search = $("#search").val();
+            $.ajax({
+                type: "GET",
+                url : "get-crud-list?page="+ page,
+                data: {
+                    status:status,
+                    search:search,
+                    },
+                success: function(data) {
+                    $('.data-list').html(data);
+                    
+                }
+            });
+    });
+
+    function getList(page=1,status='',search=''){
         $.ajax({
             type: "GET",
             url : "get-crud-list?page="+ page,
+            data: {
+                    status:status,
+                    search:search,
+                    },
             success: function(data) {
                 $('.data-list').html(data);
                 console.log("Pradeep");
