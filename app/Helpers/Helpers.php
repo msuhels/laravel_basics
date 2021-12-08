@@ -90,6 +90,50 @@ class Helpers {
         }
     }
 
+        public static function GetRecordList($data)
+    {   
+        try {
+            $columns = \Config::get('databaseTableConfig.'.$data['table_name']);    
+            // Self::pp($column); die;
+            $columns = array(
+                //form_input_name       => "database_column_name"
+                "id"            => "id",
+                "title"         => "title",
+                "description"   => "description",
+                "image"         => "image",
+            );
+
+            $searchParameters = array();
+
+            if (isset($data['input']['search']) || isset($data['input']['status']))
+             {
+                $searchParameters['status'] = $data['input']['status'];
+                $searchParameters['search'] = $data['input']['search'];
+            }
+
+            $is_deleted = isset($data['input']['status'])?$data['input']['status']:0;
+            
+            $listData = DB::table($data['table_name'])
+                ->where("is_deleted",$is_deleted)
+                ->where(function($query) use ($searchParameters)
+                    {   
+                        if ( isset($searchParameters['search']) && ($searchParameters['search'] != '' ))
+                        {
+                            foreach ($columns as $key => $value) {
+                                $query->orWhere($value, 'LIKE', "%{$searchParameters['search']}%");
+                            }
+                        }
+                    })
+                ->paginate(2)
+                ->appends(request()->except('page'));
+                echo "<pre>";print_r($listData);die;
+            return $listData;
+            
+        } catch (\Throwable $th) {
+            return "this is catch please check GetRecordList function in helper";
+        }
+    }
+
     public static function AddRecored_old($data)
     {   
         try {

@@ -19,7 +19,7 @@
 
                             <div class="col-md-2">
                                <select class="form-select form-select-md mb-3" name="status" id="status" aria-label=".form-select-lg example">
-                                  <option>Status</option>
+                                  <option value="">Status</option>
                                   <option value="1">Deleted</option>
                                   <option value="0">Not Deleted</option>
                                 </select>

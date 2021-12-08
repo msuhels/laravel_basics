@@ -48,17 +48,13 @@ $(document).ready(function() {
 
 
 $(document).on('click', ".getCrudList", function(e) {
+        $('.data-list').html('');
+            var formData = $("#searchCrud").serialize();
             
-            var page = $("#page").val();
-            var status = $("#status").val();
-            var search = $("#search").val();
             $.ajax({
                 type: "GET",
-                url : "get-crud-list?page="+ page,
-                data: {
-                    status:status,
-                    search:search,
-                    },
+                url : "get-crud-list",
+                data: formData,
                 success: function(data) {
                     $('.data-list').html(data);
                     

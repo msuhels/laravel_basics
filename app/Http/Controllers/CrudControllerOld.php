@@ -36,37 +36,10 @@ class CrudController extends Controller
 
     public function getList(Request $request)
     {   
-        $data['table_name'] = "crud";
-        $data['input'] = $request->all();
-        //$responce = Helpers::GetRecordList($data);
-
-        $searchParameters = array();
-
-        if (isset($request->search) || isset($request->status))
-         {
-        
-            $searchParameters['status'] = $request->status;
-            $searchParameters['search'] = $request->search;
-
-        }
-
-        $is_deleted = isset($request->status)?$request->status:0;
-
         $data['listData'] = CrudModel::
-                where("is_deleted",$is_deleted)
-                ->where(function($query) use ($searchParameters)
-                    {   
-                        if ( isset($searchParameters['search']) && ($searchParameters['search'] != '' ))
-                        {
-                            $columns = \Config::get('databaseTableConfig.'.'crud');
-                            foreach ($columns as $key => $value) {
-                                $query->orWhere($value, 'LIKE', "%{$searchParameters['search']}%");
-                            }
-                        }
-                    })
+                where("is_deleted","0")
                 ->paginate(2)
                 ->appends(request()->except('page'));
-        
         $data['page_name']  = "Crud-List";
         return view('pages.crud.crud-table', $data);
     }
