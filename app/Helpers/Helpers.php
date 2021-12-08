@@ -35,15 +35,15 @@ class Helpers {
     public static function AddRecored($data)
     {   
         try {
-            // $columns = \Config::get('project_config.'.$data['table_name']);    
+            $columns = \Config::get('databaseTableConfig.'.$data['table_name']);    
             // Self::pp($column); die;
-            $columns = array(
-                //form_input_name       => "database_column_name"
-                "id"            => "id",
-                "title"         => "title",
-                "description"   => "description",
-                "image"         => "image",
-            );
+            // $columns = array(
+            //     //form_input_name       => "database_column_name"
+            //     "id"            => "id",
+            //     "title"         => "title",
+            //     "description"   => "description",
+            //     "image"         => "image",
+            // );
 
             $insertArray = [];
             foreach ($columns as $key => $col) {
@@ -66,13 +66,13 @@ class Helpers {
         try {
             $columns = \Config::get('databaseTableConfig.'.$data['table_name']); 
             // self::pp($columns);
-            $columns = array(
-                //form_input_name       => "database_column_name"
-                "id"            => "id",
-                "title"         => "title",
-                "description"   => "description",
-                "image"         => "image",
-            );  
+            // $columns = array(
+            //     //form_input_name       => "database_column_name"
+            //     "id"            => "id",
+            //     "title"         => "title",
+            //     "description"   => "description",
+            //     "image"         => "image",
+            // );  
             $updateArray = [];
             
             foreach ($columns as $key => $col) {
