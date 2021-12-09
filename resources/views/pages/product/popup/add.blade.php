@@ -13,6 +13,7 @@
                 <input name="price" type="text" class="form-control" 
                     id="" required="required" value="" placeholder="Price" >
                 
+                <input type="hidden" name="url" id="addUrl" value="add-product-data" />
                 <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" 
                     onclick="submitForm()"

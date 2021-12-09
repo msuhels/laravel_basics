@@ -14,6 +14,7 @@
                     id="" required="required" value="" placeholder="description" >
                 
                 <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                <input type="hidden" name="url" id="addUrl" value="add-category-data" />
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" 
                     onclick="submitForm()"
                     data-bs-target="#addFormModal">Save</button>

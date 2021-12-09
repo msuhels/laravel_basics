@@ -1,9 +1,10 @@
 function submitForm(){
     var formData = $("#addForm").serialize();
+    var url = $("#addUrl").val();
    
     $.ajax({
         type: "POST",
-        url: "add-crud-data",
+        url: url,
         data: formData,
         success: function(data) {
             if ( data.status == 200 ) {
@@ -17,10 +18,10 @@ function submitForm(){
 }
 function editSubmitForm(){
     var formData = $("#updateForm").serialize();
-    console.log("formData",formData);
+    var url = $("#editUrl").val();
     $.ajax({
         type: "POST",
-        url : "update-crud-data",
+        url : url,
         data: formData,
         success: function(data) {
             if ( data.status == 200 ) {
@@ -50,10 +51,10 @@ $(document).ready(function() {
 $(document).on('click', ".getCrudList", function(e) {
         $('.data-list').html('');
             var formData = $("#searchCrud").serialize();
-            
+            var url = $("#listUrl").val();
             $.ajax({
                 type: "GET",
-                url : "get-crud-list",
+                url : url,
                 data: formData,
                 success: function(data) {
                     $('.data-list').html(data);
@@ -63,9 +64,10 @@ $(document).on('click', ".getCrudList", function(e) {
     });
 
     function getList(page=1,status='',search=''){
+        var url = $("#listUrl").val();
         $.ajax({
             type: "GET",
-            url : "get-crud-list?page="+ page,
+            url : url+"?page="+ page,
             data: {
                     status:status,
                     search:search,
@@ -78,9 +80,10 @@ $(document).on('click', ".getCrudList", function(e) {
     }
     $("body").on('click','.edit',function(){
         var Id = $(this).attr("data-id");
+        var url = $(this).attr("data-value");
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
-            url: 'get-crud-record',
+            url: url,
             type: 'POST',
             data: {
                     _token: CSRF_TOKEN, 
@@ -98,12 +101,13 @@ $(document).on('click', ".getCrudList", function(e) {
 
     $("body").on('click','.delete',function(){
         var Id = $(this).attr("data-id");
+        var url = $(this).attr("data-value");
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         var is_deleted = 1;
 
         if (confirm("Are you sure?")) {
             $.ajax({
-            url: 'delete-crud',
+            url: url,
             type: 'POST',
             data: {
                     _token: CSRF_TOKEN, 

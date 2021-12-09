@@ -36,11 +36,11 @@
                     </td>
                         
                     <td>
-                    <button  class="btn lni lni-trash edit" data-id="{{ $list['id'] }}">
+                    <button  class="btn lni lni-trash edit" data-id="{{ $list['id'] }}" data-value="get-crud-record">
                         Edit
                     </button>
 
-                    <button  class="btn lni lni-trash delete" data-id="{{ $list['id'] }}">
+                    <button  class="btn lni lni-trash delete" data-id="{{ $list['id'] }}" data-value="delete-crud">
                         Delete
                     </button>
                     </td>

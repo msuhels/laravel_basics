@@ -13,6 +13,7 @@
         id=""   placeholders="Image" >
     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
     <input type="hidden" name="id" id="id" value="{{ $data->id }}" />
+    <input type="hidden" name="url" id="editUrl" value="update-crud-data" />
     <button type="button" class="btn btn-success" data-bs-toggle="modal" 
         onclick="editSubmitForm()"
         data-bs-target="#editFormModal">Save</button>

@@ -13,6 +13,7 @@
                         <div class="card-body">
                            <form id="searchCrud" method="get" class="row g-3 topfilter">
                             <input class="form-control" type="hidden" name="page" id="page" value="1" >
+                            <input type="hidden" name="url" id="listUrl" value="get-product-list" />
                              <div class="col-md-2"> 
                                 <input class="form-control" type="text" name="search" id="search" value="" placeholder="Search here...." >
                             </div>
@@ -52,5 +53,5 @@
  
 @endsection
 @section("page-script")   
-<script src="{{url('assets/custom-assets/js/crud/product.js')}}"></script>
+<script src="{{url('assets/custom-assets/js/crud/crud.js')}}"></script>
 @endsection

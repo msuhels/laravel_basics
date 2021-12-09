@@ -12,7 +12,8 @@
                 <div class="card">
                         <div class="card-body">
                            <form id="searchCrud" method="get" class="row g-3 topfilter">
-                            <input class="form-control" type="hidden" name="page" id="page" value="1" >
+                            <input type="hidden" name="url" id="listUrl" value="get-crud-list" />
+                            <input type="hidden" name="page" id="page" value="1" >
                              <div class="col-md-2"> 
                                 <input class="form-control" type="text" name="search" id="search" value="" placeholder="Search here...." >
                             </div>
