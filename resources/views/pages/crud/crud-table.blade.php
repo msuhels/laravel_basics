@@ -36,11 +36,11 @@
                     </td>
                         
                     <td>
-                    <button  class="btn lni lni-trash edit" data-id="{{ $list['id'] }}" data-value="get-crud-record">
+                    <button  class="btn lni lni-trash edit" id="edit" data-coreui-toggle="modal" data-coreui-target="#editFormModal" onclick="showRecord({{ $list['id'] }},'get-crud-record')">
                         Edit
                     </button>
 
-                    <button  class="btn lni lni-trash delete" data-id="{{ $list['id'] }}" data-value="delete-crud">
+                    <button  class="btn lni lni-trash delete" data-id="{{ $list['id'] }}" data-value="delete-crud" onclick="deleteRecord({{ $list['id'] }},'delete-crud')">
                         Delete
                     </button>
                     </td>
