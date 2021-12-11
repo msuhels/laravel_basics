@@ -2,7 +2,7 @@
 
 function submitForm(){
    
-    var form_data = new FormData(document.getElementById("addForm"));
+    var formData = new FormData(document.getElementById("addForm"));
     var url = document.getElementById("addForm").querySelector("#addUrl").value;
    
     axios.post(url, formData)
@@ -57,7 +57,7 @@ function bindPagination(e){
             var page = this.href.split('page=')[1];
             var status = this.href.split('status=')[1];
             var search = this.href.split('search=')[1];
-            getList(page,status,search);
+            getList(page,search,status);
         });
     }  
 }
@@ -68,7 +68,7 @@ window.onload = function() {
 
 setTimeout(function(){
     getList();    
-}, 2000);
+}, 1000);
 
         setTimeout(function(){
 
