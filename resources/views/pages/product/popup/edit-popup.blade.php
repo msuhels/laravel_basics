@@ -5,7 +5,7 @@
         <h5 class="modal-title" id="editFormModalLabel">Modal title</h5>
         <button class="btn-close" type="button" data-coreui-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body edit-crud-modal-body">
+        <div class="modal-body edit-crud-modal-body" id="edit-crud-modal-body">
             
         </div>
         <div class="modal-footer">
