@@ -31,9 +31,6 @@ function editSubmitForm(){
       });
 }
 
-
-
-
 function getList(page=1,search='',status=''){
     
     var url = document.getElementById("searchCrud").querySelector("#listUrl").value;
@@ -41,11 +38,28 @@ function getList(page=1,search='',status=''){
     axios.get(url+"?page="+ page+"&search="+search+"&status="+status)
       .then(function (response) {
         document.getElementById('data-list').innerHTML = response.data;
-      })
+            bindPagination();
+        })
+        
       .catch(function (error) {
         console.log(error);
       });
 
+}
+
+function bindPagination(e){ 
+    const btn = document.querySelectorAll(".page-link");
+    for (i = 0; i < btn.length; i++) {
+        btn[i].addEventListener('click',function(e) {
+            e.preventDefault();
+            document.querySelector('li').classList.remove('active');
+            this.parentElement.classList.add('active');
+            var page = this.href.split('page=')[1];
+            var status = this.href.split('status=')[1];
+            var search = this.href.split('search=')[1];
+            getList(page,status,search);
+        });
+    }  
 }
 
 
@@ -58,30 +72,6 @@ setTimeout(function(){
 
         setTimeout(function(){
 
-            //get record
-            // var editEle = document.querySelectorAll('.edit');
-            // console.log("elements ",editEle.length);
-            // for(var i = 0; i < editEle.length; i++) {
-            //     var editClass = editEle[i];
-            //     editClass.onclick = function() {
-            //         var Id = this.getAttribute('data-id');
-            //         var Url = this.getAttribute("data-value");
-            //         showRecord(Id,Url);
-            //     }
-            // }
-
-            //delete record
-            // var deleteEle = document.querySelectorAll('.delete');
-            // console.log("delete ",deleteEle.length);
-            // for(var i = 0; i < deleteEle.length; i++) {
-            //     var deleteClass = deleteEle[i];
-            //     deleteClass.onclick = function() {
-            //         var Id = this.getAttribute('data-id');
-            //         var Url = this.getAttribute("data-value");
-            //         deleteRecord(Id,Url);
-            //     }
-            // }
-
             //search record
             document.getElementById("getCrudList").onclick = function()
             {
@@ -90,33 +80,6 @@ setTimeout(function(){
                 var status = document.getElementById("searchCrud").querySelector("#status").value;
                 getList(1,search,status); 
                         
-            }
-
-            //pagination
-            var pagination = document.querySelectorAll('.pagination a.page-link');
-            
-            for(var i = 0; i < pagination.length; i++) {
-                var p = pagination[i];
-                // p.onclick = function(e) {
-                //     e.preventDefault();
-                    
-                //         document.querySelector('li').classList.remove('active');
-                //         this.parentElement.classList.add('active');
-                //         var page = this.href.split('page=')[1];
-                //         var status = this.href.split('status=')[1];
-                //         var search = this.href.split('search=')[1];
-                //         getList(page,status,search);
-                // }
-                p.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                        document.querySelector('li').classList.remove('active');
-                        this.parentElement.classList.add('active');
-                        var page = this.href.split('page=')[1];
-                        var status = this.href.split('status=')[1];
-                        var search = this.href.split('search=')[1];
-                        getList(page,status,search);
-                });
             }
 
         }, 3000);
