@@ -23,4 +23,8 @@ class CategoryModel extends Model
         'update_at',
     ];
 
+    public function product()
+    {
+        return $this->hasMany(productModel::class,'category_id');
+    }
 }

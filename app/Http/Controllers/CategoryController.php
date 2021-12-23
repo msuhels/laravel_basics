@@ -25,6 +25,10 @@ class CategoryController extends Controller
     public function list(Request $request)
     {   
         
+        // $product  = CategoryModel::find(3);
+        // echo"<pre>";print_r($product->product->toArray()); 
+        // echo"<pre>";print_r($product->toArray()); die;
+
         $data['listData'] = CategoryModel::
                 where("is_deleted","0")
                 ->paginate(10)

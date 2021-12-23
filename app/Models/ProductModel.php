@@ -23,4 +23,9 @@ class ProductModel extends Model
         'update_at',
     ];
 
+    public function category()
+    {
+        return $this->belongsTo(CategoryModel::class);
+    }
+
 }

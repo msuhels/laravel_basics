@@ -24,7 +24,11 @@ class ProductController extends Controller
 
     public function list(Request $request)
     {   
-        
+        // $productD  = ProductModel::find(1);
+        // echo"<pre>";print_r($productD->toArray());
+        // $product  = ProductModel::find(1)->category;
+        // echo"<pre>";print_r($productD->category->toArray()); die;
+
         $data['listData'] = ProductModel::
                 where("is_deleted","0")
                 ->paginate(10)
