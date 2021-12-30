@@ -46,3 +46,5 @@ Route::get('/get-category-list', 'App\Http\Controllers\CategoryController@getLis
 Route::get('/login', function () {
     return view('pages.login');
 });
+
+Route::resource('schools', 'App\Http\Controllers\SchoolController');

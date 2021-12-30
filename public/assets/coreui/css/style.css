@@ -14246,4 +14246,58 @@ html:not([dir=rtl]) .wrapper {
   font-style: italic;
 }
 
+.box-footer {
+      margin-top: 13px;
+}
+
+.button-delete-trans,
+.button-delete-trans:hover{
+  color: #e55353;
+    background: transparent;
+    border-color: #e55353;
+}
+
+.button-normal-trans,
+.button-normal-trans:hover{
+    color: #3c4b64; 
+    background: transparent;
+    border-color: #3c4b64;
+}
+
+.page-top-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.textAlignRight{
+  text-align: right;
+}
+
+.marginBottom0{
+  margin-bottom: 0px;
+} 
+
+.tablehead {
+    color: #3c4b64;
+    text-decoration: none;
+    font-weight: bold;
+}   
+
+.selectArrow {
+    color: #e55353;
+}
+.sortArrow{
+    font-weight: bold !important;
+    font-size: 12px; 
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --cui-table-accent-bg: transparent !important;
+    color: var(--cui-table-striped-color);
+}
+
+
+
 /*# sourceMappingURL=style.css.map */
