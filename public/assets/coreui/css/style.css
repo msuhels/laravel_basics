@@ -14298,6 +14298,10 @@ html:not([dir=rtl]) .wrapper {
     color: var(--cui-table-striped-color);
 }
 
+.spanTab {
+    padding: 15px 10px 8px 10px;
+    border-bottom: 3px solid #3c4b64;
+}
 
 
 /*# sourceMappingURL=style.css.map */

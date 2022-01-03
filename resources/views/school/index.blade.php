@@ -12,7 +12,8 @@
                 <div class="page-top-header">      
 
                             <span id="card_title">
-                                {{ __('School') }}
+                                {{ __('School') }} ({{ $schools->total() }})
+
                             </span>
 
                              <div class="float-right">
@@ -30,7 +31,7 @@
 
                     <div class="card-body">
                         <div>
-                            <span>All</span>
+                            <span class="spanTab">All</span>
                         </div>
                         <hr/>
                         <form method="get">
@@ -57,12 +58,12 @@
                                         >    
                                     </div>
                                 </div>
-                                <div class="col-sm-2 textAlignRight">   
-                                    <button type="submit" class="btn btn-sm btn-primary button-normal-trans">
+                                <div class="col-sm-2 ">   
+                                    <button type="submit" class="btn btn-sm btn-primary button-normal-trans" title="Search">
                                         <i class="fa fa-fw fa-search"></i> 
                                         
                                     </button>
-                                    <a href="{{url()->current()}}" class="btn btn-sm btn-success button-normal-trans">
+                                    <a href="{{url()->current()}}" class="btn btn-sm btn-success button-normal-trans" title="Reset">
                                         <i class="fa fa-fw fa-redo"></i> 
                                     </a>
                                 </div>
@@ -72,6 +73,12 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
+                                        <th>
+                                            <input type="checkbox" 
+                                            class="selectAllRow" 
+                                            onclick="selectAllRow()"
+                                            name="all">
+                                        </th>
                                         
 										<th><a class="tablehead" href='{{ request()->fullUrlWithQuery(["sortby" => "name", "orderby" => (app("request")->input("orderby") && app("request")->input("orderby") == "asc") ? "desc" : "asc"])  }}'>Name
                 @if(app("request")->input("orderby") == "desc" && app("request")->input("sortby") == "name")  
@@ -112,6 +119,9 @@
                                 <tbody>
                                     @foreach ($schools as $school)
                                         <tr>
+                                            <td>
+                                                <input type="checkbox" class="selectRow" name="row_{{$i++}}">
+                                            </td>
                                             
 											<td>{{ $school->name }}</td>
 											<td>{{ $school->location }}</td>
@@ -147,6 +157,18 @@
                 document.getElementById("actionForm").submit();
             }
 
+        }
+
+        function selectAllRow() {
+            var checkAllBox = document.getElementsByClassName("selectAllRow")[0];
+            var rowCheckBox = document.getElementsByClassName("selectRow");
+
+            var setValue = (checkAllBox.checked == true) ? true : false;
+
+            for(var i=0; i< rowCheckBox.length; i++){
+                    rowCheckBox[i].checked = setValue;
+            }
+            
         }
     </script>
 @endsection
