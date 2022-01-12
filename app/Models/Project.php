@@ -14,5 +14,7 @@ class Project extends Model
         'location',
         'introduction',
         'cost',
+        'image',
+
     ];
 }
